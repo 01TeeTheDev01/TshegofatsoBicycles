@@ -23,7 +23,6 @@ namespace catalog.api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
@@ -31,7 +30,10 @@ namespace catalog.api
             });
             services.AddTransient<ProductActions>();
             services.AddTransient<Product>();
+            services.AddTransient<Services.CatalogDbContext.CatalogDbContextList>();
+            services.AddTransient<Services.CatalogDbContext.DbContext>();
             services.AddScoped<IProduct, ProductService>();
+            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

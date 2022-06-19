@@ -32,7 +32,7 @@ namespace catalog.api.Controllers
             var result = await productActions.GetProductsAsync();
 
             if (result == null)
-                return NotFound();
+                return NoContent();
 
             return Ok(result);
         }
@@ -69,14 +69,14 @@ namespace catalog.api.Controllers
         // POST api/<ProductsController>
         [HttpPost]
         [Route("AddProduct/{brand}/{model}/{style}/{color}/{wheelSize}/{price}")]
-        public async Task<ActionResult<bool>> AddProduct(string brand, string model, string style, string color, int wheelSize, decimal price)
+        public async Task<ActionResult<Product>> AddProduct(string brand, string model, string style, string color, int wheelSize, decimal price)
         {
             var result = await productActions.AddProductAsync(brand, model, style, color, wheelSize, price);
 
             if (result == null)
                 return BadRequest($"Failed to add {result} to database.");
 
-            return Ok(result);
+            return Ok($"{result} has been added to the database");
         }
 
 
@@ -90,7 +90,7 @@ namespace catalog.api.Controllers
             if (!result)
                 return NotFound($"Product with Id = '{id}' does not exist in the catalog.");
 
-            return Ok($"Product with Id = '{result}' has been removed from the catalog.");
+            return Ok($"Product with Id = '{id}' has been removed from the catalog.");
         }
     }
 }
