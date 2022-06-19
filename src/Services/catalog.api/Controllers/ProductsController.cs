@@ -25,7 +25,7 @@ namespace catalog.api.Controllers
 
 
         // GET: api/<ProductsController>
-        [HttpGet]
+        [HttpGet()]
         [Route("GetProducts")]
         public async Task<ActionResult<List<Product>>> GetProducts()
         {
@@ -74,9 +74,9 @@ namespace catalog.api.Controllers
             var result = await productActions.AddProductAsync(brand, model, style, color, wheelSize, price);
 
             if (result == null)
-                return BadRequest($"Failed to add {result} to database.");
+                return BadRequest($"Product Id = '{result.Id}': {result.Brand}-{result.Model} was not added to the database");
 
-            return Ok($"{result} has been added to the database");
+            return Ok($"Product Id = '{result.Id}': {result.Brand}-{result.Model} has been added to the database");
         }
 
 
@@ -88,7 +88,7 @@ namespace catalog.api.Controllers
             var result = await productActions.DeleteByIdAsync(id);
 
             if (!result)
-                return NotFound($"Product with Id = '{id}' does not exist in the catalog.");
+                return NotFound($"Product with Id = '{id}' not found in catalog.");
 
             return Ok($"Product with Id = '{id}' has been removed from the catalog.");
         }

@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
-using System.Drawing;
-using System.Reflection;
 using System.Threading.Tasks;
 
 using catalog.api.Models;
@@ -87,9 +85,7 @@ namespace catalog.api.Services.CatalogDbContext
             try
             {
                 string id, brand, model, style, color;
-
                 int wheelSize, wheels;
-
                 decimal price;
 
                 var conn = new SqlConnection(DbContextConstant.ConnectionString);
@@ -105,14 +101,12 @@ namespace catalog.api.Services.CatalogDbContext
                 wheelSize = product.WheelSize;
                 price = Convert.ToDecimal(product.Price.ToString().Replace(".", ","));
 
-
                 var comm = new SqlCommand()
                 {
                     CommandText = $"INSERT INTO Products VALUES('{id}','{brand}','{model}','{style}',{wheels},{wheelSize},'{color}',{price});",
-                    Connection = conn, 
+                    Connection = conn,
                     CommandType = System.Data.CommandType.Text
                 };
-
 
                 var result = await comm.ExecuteNonQueryAsync();
 
