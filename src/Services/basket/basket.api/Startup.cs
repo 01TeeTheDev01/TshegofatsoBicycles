@@ -3,9 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
+using basket.api.Services.Basket_Repository_Service;
+using basket.api.Services.BasketDatabaseContext;
+
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -32,6 +36,9 @@ namespace basket.api
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "basket.api", Version = "v1" });
             });
+            services.AddDbContext<BasketDbContext>(options =>
+            options.UseSqlServer(Configuration.GetConnectionString("BasketDB")));
+            services.AddScoped<IBasketRepsoitory, BasketRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

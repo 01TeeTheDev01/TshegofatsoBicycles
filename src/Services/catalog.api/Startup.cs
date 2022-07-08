@@ -34,7 +34,8 @@ namespace catalog.api
             services.AddTransient<Product>();
             services.AddTransient<Services.CatalogDbContext.CatalogDbContext>();
             services.AddScoped<IProductRepository, ProductRepository>();
-            services.AddDbContext<Services.CatalogDbContext.CatalogDbContext>(options =>options.UseSqlServer(Configuration.GetConnectionString("TshegofatsoBicyclesDBConnection")));
+            services.AddDbContext<Services.CatalogDbContext.CatalogDbContext>(options =>
+            options.UseSqlServer(Configuration.GetConnectionString("ProductsDB")));
         }
 
 // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
