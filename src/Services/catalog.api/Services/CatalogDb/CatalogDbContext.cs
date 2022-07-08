@@ -23,12 +23,10 @@ namespace catalog.api.Services.CatalogDbContext
                 .HasData(new Product 
                 { 
                     Brand = "Raleigh", 
-                    Color = "Black", 
-                    Id = Guid.NewGuid().ToString(), 
+                    Color = "Black",
                     Model = "Mongoose", 
                     Price = 1_799.99m, 
-                    Style = "BMX", 
-                    Wheels = 2, 
+                    Style = "BMX",
                     WheelSize = 17
                 });
 
@@ -37,11 +35,9 @@ namespace catalog.api.Services.CatalogDbContext
                 {
                     Brand = "Raleigh",
                     Color = "Red",
-                    Id = Guid.NewGuid().ToString(),
                     Model = "Panther",
                     Price = 2_499.99m,
                     Style = "RACING",
-                    Wheels = 2,
                     WheelSize = 22
                 });
 
@@ -50,11 +46,9 @@ namespace catalog.api.Services.CatalogDbContext
                 {
                     Brand = "Armstrong",
                     Color = "Silver",
-                    Id = Guid.NewGuid().ToString(),
                     Model = "Mongoose",
                     Price = 2_999.99m,
                     Style = "RACING",
-                    Wheels = 2,
                     WheelSize = 22
                 });
 
@@ -63,11 +57,9 @@ namespace catalog.api.Services.CatalogDbContext
                {
                    Brand = "Peagot",
                    Color = "Silver-Gray",
-                   Id = Guid.NewGuid().ToString(),
                    Model = "Sprinter-X2",
                    Price = 1_299.99m,
                    Style = "BMX",
-                   Wheels = 2,
                    WheelSize = 17
                });
         }
