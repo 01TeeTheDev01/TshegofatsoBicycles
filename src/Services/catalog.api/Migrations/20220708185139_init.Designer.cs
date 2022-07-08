@@ -10,7 +10,7 @@ namespace catalog.api.Migrations
 {
     [DbContext(typeof(CatalogDbContext))]
     [Migration("20220708185139_init")]
-    partial class init
+    partial class Init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
