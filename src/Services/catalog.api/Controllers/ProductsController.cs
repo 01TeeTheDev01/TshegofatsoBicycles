@@ -15,21 +15,20 @@ namespace catalog.api.Controllers
     [ApiController]
     public class ProductsController : ControllerBase
     {
+        private readonly IProductRepository productRepository;
 
-        private readonly ProductActions productActions;
-
-        public ProductsController(ProductActions productActions)
+        public ProductsController(IProductRepository productRepository)
         {
-            this.productActions = productActions ?? throw new ArgumentNullException(nameof(productActions));
+            this.productRepository = productRepository;
         }
 
 
         // GET: api/<ProductsController>
-        [HttpGet()]
+        [HttpGet]
         [Route("GetProducts")]
         public async Task<ActionResult<List<Product>>> GetProducts()
         {
-            var result = await productActions.GetProductsAsync();
+            var result = await productRepository.GetProducts();
 
             if (result == null)
                 return NoContent();
@@ -39,11 +38,11 @@ namespace catalog.api.Controllers
 
 
         // GET api/<ProductsController>/5
-        [HttpGet()]
+        [HttpGet]
         [Route("SearchByBrand/{brand}")]
         public async Task<ActionResult<IReadOnlyCollection<Product>>> SearchByBrand(string brand)
         {
-            var result = await productActions.SearchByBrandAsync(brand);
+            var result = await productRepository.SearchByBrand(brand);
 
             if (result == null)
                 return NotFound($"We don't have a product with the name of '{brand}' in our catalog. ");
@@ -53,11 +52,11 @@ namespace catalog.api.Controllers
 
 
         // GET api/<ProductsController>/5
-        [HttpGet()]
+        [HttpGet]
         [Route("SearchByWheelSize/{wheelSize}")]
         public async Task<ActionResult<IReadOnlyCollection<Product>>> SearchByWheelSize(int wheelSize)
         {
-            var result = await productActions.SearchByWheelSizeAsync(wheelSize);
+            var result = await productRepository.SearchByWheelSize(wheelSize);
 
             if (result == null)
                 return NotFound($"We don't have a product with wheel size of '{wheelSize}\"' in stock. ");
@@ -71,7 +70,15 @@ namespace catalog.api.Controllers
         [Route("AddProduct/{brand}/{model}/{style}/{color}/{wheelSize}/{price}")]
         public async Task<ActionResult<Product>> AddProduct(string brand, string model, string style, string color, int wheelSize, decimal price)
         {
-            var result = await productActions.AddProductAsync(brand, model, style, color, wheelSize, price);
+            var result = await productRepository.AddProduct(new Product 
+            { 
+                Brand = brand, 
+                Model = model, 
+                Style = style, 
+                Color = color, 
+                WheelSize = wheelSize, 
+                Price = price
+            });
 
             if (result == null)
                 return BadRequest($"Product Id = '{result.Id}': {result.Brand}-{result.Model} was not added to the database");
@@ -81,11 +88,11 @@ namespace catalog.api.Controllers
 
 
         // DELETE api/<ProductsController>/5
-        [HttpDelete()]
+        [HttpDelete]
         [Route("DeleteById/{id}")]
         public async Task<ActionResult<bool>> DeleteById(string id)
         {
-            var result = await productActions.DeleteByIdAsync(id);
+            var result = await productRepository.DeleteById(id);
 
             if (!result)
                 return NotFound($"Product with Id = '{id}' not found in catalog.");

@@ -1,9 +1,12 @@
 
+using System.Xml.Linq;
+
 using catalog.api.Models;
 using catalog.api.Services;
 
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -28,16 +31,14 @@ namespace catalog.api
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "catalog.api", Version = "v1" });
             });
-            services.AddTransient<ProductActions>();
             services.AddTransient<Product>();
-            services.AddTransient<Services.CatalogDbContext.CatalogDbContextList>();
-            services.AddTransient<Services.CatalogDbContext.DbContext>();
-            services.AddScoped<IProduct, ProductService>();
-            
+            services.AddTransient<Services.CatalogDbContext.CatalogDbContext>();
+            services.AddScoped<IProductRepository, ProductRepository>();
+            services.AddDbContext<Services.CatalogDbContext.CatalogDbContext>(options =>options.UseSqlServer(Configuration.GetConnectionString("TshegofatsoBicyclesDBConnection")));
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+    public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
             {

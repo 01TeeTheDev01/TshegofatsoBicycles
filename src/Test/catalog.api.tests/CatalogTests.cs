@@ -8,13 +8,15 @@ namespace catalog.api.tests
     [TestClass]
     public class CatalogTests
     {
+        private IProductRepository productActions;
+
         [TestMethod]
         public void GetProducts_ProductData_IsAvailable()
         {
             try
             {
-                ProductActions productActions = new(new ProductService(new Services.CatalogDbContext.DbContext()), new Product());
-                var result = productActions.GetProductsAsync();
+                productActions = new(new ProductRepository(new Services.CatalogDbContext.CatalogDbContext(), new Product());
+                var result = productActions.GetProducts();
                 Assert.IsNotNull(result.Result);
             }
             catch (System.Exception ex)
@@ -29,7 +31,7 @@ namespace catalog.api.tests
         {
             try
             {
-                ProductActions productActions = new(new ProductService(new Services.CatalogDbContext.DbContext()), new Product());
+                productActions = new(new ProductRepository(new Services.CatalogDbContext.CatalogDbContext()), new Product());
                 var result = productActions.GetProductsAsync();
 
                 Assert.IsNull(result.Result);
@@ -47,8 +49,8 @@ namespace catalog.api.tests
         {
             try
             {
-                ProductActions productActions = new(new ProductService(
-                new Services.CatalogDbContext.DbContext()), new Product());
+                productActions = new(new ProductRepository(
+                new Services.CatalogDbContext.CatalogDbContext()), new Product());
                 var result = productActions.AddProductAsync("Raleigh", "Mongoose", "BMX", "Red", 17, 1599m);
                 Assert.IsNotNull(result.Result);
             }
@@ -64,7 +66,7 @@ namespace catalog.api.tests
         {
             try
             {
-                ProductActions productActions = new(new ProductService(new Services.CatalogDbContext.DbContext()), new Product());
+                ProductActions productActions = new(new ProductRepository(new Services.CatalogDbContext.CatalogDbContext()), new Product());
                 var result = productActions.AddProductAsync(null, "Mongoose", "BMX", null, 0, 0.0m);
                 Assert.IsNull(result.Result);
             }
@@ -80,7 +82,7 @@ namespace catalog.api.tests
         {
             try
             {
-                ProductActions productActions = new(new ProductService(new Services.CatalogDbContext.DbContext()), new Product());
+                ProductActions productActions = new(new ProductRepository(new Services.CatalogDbContext.CatalogDbContext()), new Product());
                 var result = productActions.SearchByBrandAsync("Raleigh");
                 Assert.IsNotNull(result.Result);
             }
@@ -96,7 +98,7 @@ namespace catalog.api.tests
         {
             try
             {
-                ProductActions productActions = new(new ProductService(new Services.CatalogDbContext.DbContext()), new Product());
+                ProductActions productActions = new(new ProductRepository(new Services.CatalogDbContext.CatalogDbContext()), new Product());
                 var result = productActions.SearchByBrandAsync("Pireless");
                 Assert.IsNull(result.Result);
             }
@@ -112,7 +114,7 @@ namespace catalog.api.tests
         {
             try
             {
-                ProductActions productActions = new(new ProductService(new Services.CatalogDbContext.DbContext()), new Product());
+                ProductActions productActions = new(new ProductRepository(new Services.CatalogDbContext.CatalogDbContext()), new Product());
                 var result = productActions.SearchByWheelSizeAsync(17);
                 Assert.IsNotNull(result.Result);
             }
@@ -128,7 +130,7 @@ namespace catalog.api.tests
         {
             try
             {
-                ProductActions productActions = new(new ProductService(new Services.CatalogDbContext.DbContext()), new Product());
+                ProductActions productActions = new(new ProductRepository(new Services.CatalogDbContext.CatalogDbContext()), new Product());
                 var result = productActions.SearchByWheelSizeAsync(30);
                 Assert.IsNull(result.Result);
             }
@@ -144,8 +146,8 @@ namespace catalog.api.tests
         {
             try
             {
-                ProductActions productActions = new(new ProductService(new Services.CatalogDbContext.DbContext()), new Product());
-                var result = productActions.DeleteByIdAsync("58s497sa67a58s");
+                productActions = new(new ProductRepository(new Services.CatalogDbContext.CatalogDbContext()), new Product());
+                var result = productActions.DeleteById("58s497sa67a58s");
                 Assert.IsTrue(result.Result);
             }
             catch (System.Exception ex)
@@ -160,9 +162,9 @@ namespace catalog.api.tests
         {
             try
             {
-                ProductActions productActions = new(
-                new ProductService(
-                    new Services.CatalogDbContext.DbContext()), new Product());
+                productActions = new(
+                new ProductRepository(
+                    new Services.CatalogDbContext.CatalogDbContext()), new Product());
                 var result = productActions.DeleteByIdAsync("Raleigh");
                 Assert.IsFalse(result.Result);
             }
