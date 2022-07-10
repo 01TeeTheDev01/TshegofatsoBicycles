@@ -2,6 +2,9 @@
 
 using Microsoft.EntityFrameworkCore;
 
+using catalog.api.Models;
+using System.Collections.Generic;
+
 namespace basket.api.Services.BasketDatabaseContext
 {
     public class BasketDbContext : DbContext
@@ -20,7 +23,14 @@ namespace basket.api.Services.BasketDatabaseContext
             modelBuilder.Entity<Basket>().HasData(
                 new Basket
                 {
-                     
+                    BasketItems = new List<Product>
+                    {
+                        new Product
+                        {
+                            
+                        }
+                    }
+
                 });
 
             modelBuilder.Entity<Basket>().HasData(
