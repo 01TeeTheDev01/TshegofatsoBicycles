@@ -1,0 +1,97 @@
+﻿<Window x:Class="TshegofatsoBicyclesGUI.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TshegofatsoBicyclesGUI"
+        mc:Ignorable="d"
+        Height="400" 
+        Width="500"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="CanMinimize">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height=".5*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="0"
+                    Orientation="Horizontal"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center">
+
+            <TextBlock Text="EMPLOYEE" FontWeight="Bold" Foreground="#d98717"/>
+            <TextBlock Text="LOGIN" Margin="3,0,0,0" Foreground="#3c3c39"/>
+
+        </StackPanel>
+
+        <Image Grid.Row="1" 
+               HorizontalAlignment="Center" 
+               VerticalAlignment="Center"
+               Source="Images/user.png"
+               Margin="5"/>
+
+        <Grid Grid.Row="2"
+              HorizontalAlignment="Center"
+              Width="270">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <TextBox Grid.Row="0" 
+                     Height="30"
+                     VerticalContentAlignment="Center"
+                     Margin="5"
+                     Background="#323232"
+                     Foreground="Wheat"/>
+
+            <PasswordBox Grid.Row="1" 
+                         Height="30" 
+                         PasswordChar="•"
+                         VerticalContentAlignment="Center"
+                         Margin="5"
+                         Background="#323232"
+                         Foreground="Wheat"/>
+
+        </Grid>
+
+        <Grid Grid.Row=" 3"
+              Margin="5,10"
+              HorizontalAlignment="Center"
+              Width="250">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="9*"/>
+            </Grid.ColumnDefinitions>
+
+            <RadioButton Grid.Column="0"
+                         VerticalAlignment="Center" 
+                         VerticalContentAlignment="Center" 
+                         Background="#484847"/>
+
+            <TextBlock Grid.Column="1" 
+                       Text="Remeber me" 
+                       VerticalAlignment="Center"
+                       Foreground="#484847"
+                       FontWeight="SemiBold"/>
+
+        </Grid>
+
+        <Button Grid.Row="4" 
+                Background="#f18902" 
+                Foreground="Wheat" 
+                Content="LOGIN"
+                VerticalAlignment="Center"
+                HorizontalAlignment="Center"
+                Width="150"
+                Height="30"
+                FontWeight="SemiBold"
+                FontSize="18"
+                Margin="0,-30,0,0"/>
+    </Grid>
+</Window>
