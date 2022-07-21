@@ -6,4 +6,9 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\Services\basket\basket.api\basket.api.csproj" />
+    <ProjectReference Include="..\..\Services\catalog.api\catalog.api.csproj" />
+  </ItemGroup>
+
 </Project>

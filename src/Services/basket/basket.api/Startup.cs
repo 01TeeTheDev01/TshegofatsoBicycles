@@ -36,8 +36,7 @@ namespace basket.api
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "basket.api", Version = "v1" });
             });
-            services.AddDbContext<BasketDbContext>(options =>
-            options.UseSqlServer(Configuration.GetConnectionString("BasketDB")));
+            services.AddDbContext<BasketDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("BasketDB")));
             services.AddScoped<IBasketRepsoitory, BasketRepository>();
         }
 

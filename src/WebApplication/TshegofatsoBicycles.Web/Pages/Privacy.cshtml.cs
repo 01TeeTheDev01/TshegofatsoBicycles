@@ -14,6 +14,7 @@ namespace TshegofatsoBicycles.Web.Pages
 
         public void OnGet()
         {
+            
         }
     }
 }

@@ -9,8 +9,8 @@ using catalog.api.Services.CatalogDbContext;
 namespace catalog.api.Migrations
 {
     [DbContext(typeof(CatalogDbContext))]
-    [Migration("20220708185139_init")]
-    partial class Init
+    [Migration("20220721125121_ProductSeed")]
+    partial class ProductSeed
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -18,7 +18,7 @@ namespace catalog.api.Migrations
             modelBuilder
                 .UseIdentityColumns()
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
-                .HasAnnotation("ProductVersion", "5.0.1");
+                .HasAnnotation("ProductVersion", "5.0.0");
 
             modelBuilder.Entity("catalog.api.Models.Product", b =>
                 {
@@ -49,41 +49,6 @@ namespace catalog.api.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Products");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = "27d3443e-288a-4a7e-a6bb-c0e0f6ef11fc",
-                            Brand = "Raleigh",
-                            Color = "Black",
-                            Model = "Mongoose",
-                            Price = 1799.99m,
-                            Style = "BMX",
-                            WheelSize = 17,
-                            Wheels = 2
-                        },
-                        new
-                        {
-                            Id = "4ab61802-e7ef-4a4e-ada7-5fb2d0759aa0",
-                            Brand = "Raleigh",
-                            Color = "Red",
-                            Model = "Panther",
-                            Price = 2499.99m,
-                            Style = "RACING",
-                            WheelSize = 22,
-                            Wheels = 2
-                        },
-                        new
-                        {
-                            Id = "c506a5ef-404f-4e19-9f97-d3a446209782",
-                            Brand = "Armstring",
-                            Color = "Silver",
-                            Model = "Mongoose",
-                            Price = 2999.99m,
-                            Style = "RACING",
-                            WheelSize = 22,
-                            Wheels = 2
-                        });
                 });
 #pragma warning restore 612, 618
         }

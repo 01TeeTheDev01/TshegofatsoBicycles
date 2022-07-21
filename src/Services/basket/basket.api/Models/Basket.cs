@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations;
 
 using catalog.api.Models;
 
@@ -8,8 +8,10 @@ namespace basket.api.Models
 {
     public class Basket
     {
-        public IEnumerable<Product> BasketItems { get; set; } = null;
-        public string BasketId { get; set; } = Guid.NewGuid().ToString();
+        public Guid BasketId { get; set; } = Guid.NewGuid();
+
+        public Product BasketItem { get; set; } = null;
+
         public decimal BasketTotalPrice { get; set; } = 0.0m;
     }
 }

@@ -1,10 +1,14 @@
 ﻿namespace basket.api.Services.Basket_Repository_Service
 {
+    using System;
+    using System.Collections.Generic;
     using System.Threading.Tasks;
 
     using basket.api.Models;
 
     using BasketDatabaseContext;
+
+    using catalog.api.Models;
 
     using Microsoft.EntityFrameworkCore;
 
@@ -19,7 +23,16 @@
 
         public async Task<Basket> GetBasket(string id)
         {
-            return await basketDbContext.Baskets.FirstOrDefaultAsync(basket => basket.BasketId == id);
+            var basket = await basketDbContext.Basket.FirstOrDefaultAsync(basket => basket.BasketId == Guid.Parse(id));
+
+            return basket;
+        }
+
+        public async Task<IEnumerable<Basket>> GetBaskets()
+        {
+            var baskets = await basketDbContext.Basket.ToListAsync();
+
+            return baskets;
         }
     }
 }

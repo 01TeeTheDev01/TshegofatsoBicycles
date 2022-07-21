@@ -11,6 +11,8 @@ namespace catalog.api.Services
         Task<Product> AddProduct(Product product);
         Task<IEnumerable<Product>> SearchByWheelSize(int wheelSize);
         Task<IEnumerable<Product>> SearchByBrand(string brand);
+        Task<IEnumerable<Product>> SearchByColor(string color);
+        Task<IEnumerable<Product>> SearchByPrice(decimal price);
         Task<bool> DeleteById(string id);
     }
 }

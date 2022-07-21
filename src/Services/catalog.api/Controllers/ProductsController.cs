@@ -11,8 +11,9 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace catalog.api.Controllers
 {
-    [Route("api/[controller]")]
     [ApiController]
+    [Route("api/[controller]")]
+    [Produces("application/json")]
     public class ProductsController : ControllerBase
     {
         private readonly IProductRepository productRepository;
@@ -24,8 +25,7 @@ namespace catalog.api.Controllers
 
 
         // GET: api/<ProductsController>
-        [HttpGet]
-        [Route("GetProducts")]
+        [HttpGet("GetProducts")]
         public async Task<ActionResult<List<Product>>> GetProducts()
         {
             var result = await productRepository.GetProducts();
@@ -38,8 +38,7 @@ namespace catalog.api.Controllers
 
 
         // GET api/<ProductsController>/5
-        [HttpGet]
-        [Route("SearchByBrand/{brand}")]
+        [HttpGet("SearchByBrand")]
         public async Task<ActionResult<IReadOnlyCollection<Product>>> SearchByBrand(string brand)
         {
             var result = await productRepository.SearchByBrand(brand);
@@ -52,8 +51,7 @@ namespace catalog.api.Controllers
 
 
         // GET api/<ProductsController>/5
-        [HttpGet]
-        [Route("SearchByWheelSize/{wheelSize}")]
+        [HttpGet("SearchByWheelSize")]
         public async Task<ActionResult<IReadOnlyCollection<Product>>> SearchByWheelSize(int wheelSize)
         {
             var result = await productRepository.SearchByWheelSize(wheelSize);
@@ -65,9 +63,34 @@ namespace catalog.api.Controllers
         }
 
 
+        // GET api/<ProductsController>/5
+        [HttpGet("SearchByColor")]
+        public async Task<ActionResult<IReadOnlyCollection<Product>>> SearchByColor(string color)
+        {
+            var result = await productRepository.SearchByColor(color);
+
+            if (result == null)
+                return NotFound($"We don't have a product with a color of '{color}\"' in stock. ");
+
+            return Ok(result);
+        }
+
+
+        // GET api/<ProductsController>/5
+        [HttpGet("SearchByPrice")]
+        public async Task<ActionResult<IReadOnlyCollection<Product>>> SearchByPrice(decimal price)
+        {
+            var result = await productRepository.SearchByPrice(price);
+
+            if (result == null)
+                return NotFound($"We don't have a product with a price of '{price}\"' in stock. ");
+
+            return Ok(result);
+        }
+
+
         // POST api/<ProductsController>
-        [HttpPost]
-        [Route("AddProduct/{brand}/{model}/{style}/{color}/{wheelSize}/{price}")]
+        [HttpPost("AddProduct")]
         public async Task<ActionResult<Product>> AddProduct(string brand, string model, string style, string color, int wheelSize, decimal price)
         {
             var result = await productRepository.AddProduct(new Product 
@@ -88,8 +111,7 @@ namespace catalog.api.Controllers
 
 
         // DELETE api/<ProductsController>/5
-        [HttpDelete]
-        [Route("DeleteById/{id}")]
+        [HttpDelete("DeleteById")]
         public async Task<ActionResult<bool>> DeleteById(string id)
         {
             var result = await productRepository.DeleteById(id);

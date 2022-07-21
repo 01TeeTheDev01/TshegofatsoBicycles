@@ -45,12 +45,37 @@ namespace catalog.api.Services
 
         public async Task<IEnumerable<Product>> GetProducts()
         {
-            return await catalogDbContext.Products.ToListAsync();
+            var result = await catalogDbContext.Products.ToListAsync();
+
+            if (result != null)
+                return result;
+
+            return null;
         }
 
         public async Task<IEnumerable<Product>> SearchByBrand(string brand)
         {
             var result = await catalogDbContext.Products.Where(p => p.Brand == brand).ToListAsync();
+
+            if (result != null)
+                return await Task.FromResult(result);
+
+            return null;
+        }
+
+        public async Task<IEnumerable<Product>> SearchByColor(string color)
+        {
+            var result = await catalogDbContext.Products.Where(p => p.Color == color).ToListAsync();
+
+            if (result != null)
+                return await Task.FromResult(result);
+
+            return null;
+        }
+
+        public async Task<IEnumerable<Product>> SearchByPrice(decimal price)
+        {
+            var result = await catalogDbContext.Products.Where(p => p.Price == price).ToListAsync();
 
             if (result != null)
                 return await Task.FromResult(result);
