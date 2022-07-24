@@ -35,7 +35,7 @@ namespace basket.api.Migrations
 
                     b.HasIndex("BasketItemId");
 
-                    b.ToTable("Basket");
+                    b.ToTable("Baskets");
                 });
 
             modelBuilder.Entity("catalog.api.Models.Product", b =>

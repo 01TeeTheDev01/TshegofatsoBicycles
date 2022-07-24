@@ -6,7 +6,7 @@ namespace basket.api.Services.BasketDatabaseContext
 {
     public class BasketDbContext : DbContext
     {
-        public DbSet<Basket> Basket { get; set; }
+        public DbSet<Basket> Baskets { get; set; }
 
         public BasketDbContext(DbContextOptions<BasketDbContext> options) 
             : base(options)

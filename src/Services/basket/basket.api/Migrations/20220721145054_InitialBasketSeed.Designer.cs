@@ -10,8 +10,8 @@ using basket.api.Services.BasketDatabaseContext;
 namespace basket.api.Migrations
 {
     [DbContext(typeof(BasketDbContext))]
-    [Migration("20220721125150_BasketSeed")]
-    partial class BasketSeed
+    [Migration("20220721145054_InitialBasketSeed")]
+    partial class InitialBasketSeed
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -37,7 +37,7 @@ namespace basket.api.Migrations
 
                     b.HasIndex("BasketItemId");
 
-                    b.ToTable("Basket");
+                    b.ToTable("Baskets");
                 });
 
             modelBuilder.Entity("catalog.api.Models.Product", b =>

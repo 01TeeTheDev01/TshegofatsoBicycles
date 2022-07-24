@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace basket.api.Migrations
 {
-    public partial class BasketSeed : Migration
+    public partial class InitialBasketSeed : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -26,7 +26,7 @@ namespace basket.api.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Basket",
+                name: "Baskets",
                 columns: table => new
                 {
                     BasketId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
@@ -35,9 +35,9 @@ namespace basket.api.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Basket", x => x.BasketId);
+                    table.PrimaryKey("PK_Baskets", x => x.BasketId);
                     table.ForeignKey(
-                        name: "FK_Basket_Product_BasketItemId",
+                        name: "FK_Baskets_Product_BasketItemId",
                         column: x => x.BasketItemId,
                         principalTable: "Product",
                         principalColumn: "Id",
@@ -45,15 +45,15 @@ namespace basket.api.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Basket_BasketItemId",
-                table: "Basket",
+                name: "IX_Baskets_BasketItemId",
+                table: "Baskets",
                 column: "BasketItemId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Basket");
+                name: "Baskets");
 
             migrationBuilder.DropTable(
                 name: "Product");

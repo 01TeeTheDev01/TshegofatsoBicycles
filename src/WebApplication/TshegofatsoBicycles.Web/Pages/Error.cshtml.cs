@@ -22,7 +22,14 @@ namespace TshegofatsoBicycles.Web.Pages
 
         public void OnGet()
         {
-            RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier;
+            try
+            {
+                RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier;
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError($"{ex.Message}");
+            }
         }
     }
 }

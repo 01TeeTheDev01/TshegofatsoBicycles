@@ -29,6 +29,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TshegoBikes.Android", "..\.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TshegoBikes.iOS", "..\..\Xamarin\TshegoBikes\TshegoBikes\TshegoBikes.iOS\TshegoBikes.iOS.csproj", "{6F09E174-87C3-4BB0-AB60-10F60ABA9ACE}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "users", "users", "{C2984A71-6A93-43CE-8928-93B954508958}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "User.Api", "Services\users\User.Api\User.Api.csproj", "{D30C1941-462A-409A-9186-553812A20E76}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -129,6 +133,18 @@ Global
 		{6F09E174-87C3-4BB0-AB60-10F60ABA9ACE}.Release|iPhone.Build.0 = Release|iPhone
 		{6F09E174-87C3-4BB0-AB60-10F60ABA9ACE}.Release|iPhoneSimulator.ActiveCfg = Release|iPhoneSimulator
 		{6F09E174-87C3-4BB0-AB60-10F60ABA9ACE}.Release|iPhoneSimulator.Build.0 = Release|iPhoneSimulator
+		{D30C1941-462A-409A-9186-553812A20E76}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D30C1941-462A-409A-9186-553812A20E76}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D30C1941-462A-409A-9186-553812A20E76}.Debug|iPhone.ActiveCfg = Debug|Any CPU
+		{D30C1941-462A-409A-9186-553812A20E76}.Debug|iPhone.Build.0 = Debug|Any CPU
+		{D30C1941-462A-409A-9186-553812A20E76}.Debug|iPhoneSimulator.ActiveCfg = Debug|Any CPU
+		{D30C1941-462A-409A-9186-553812A20E76}.Debug|iPhoneSimulator.Build.0 = Debug|Any CPU
+		{D30C1941-462A-409A-9186-553812A20E76}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D30C1941-462A-409A-9186-553812A20E76}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D30C1941-462A-409A-9186-553812A20E76}.Release|iPhone.ActiveCfg = Release|Any CPU
+		{D30C1941-462A-409A-9186-553812A20E76}.Release|iPhone.Build.0 = Release|Any CPU
+		{D30C1941-462A-409A-9186-553812A20E76}.Release|iPhoneSimulator.ActiveCfg = Release|Any CPU
+		{D30C1941-462A-409A-9186-553812A20E76}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -143,6 +159,8 @@ Global
 		{B5B96E4A-DDDD-4019-BF5D-23C948713D4A} = {17927C87-38FB-4532-B9C5-AB707347E6E5}
 		{6A133CD6-1F31-40F2-9D1A-EFEC1D0482AE} = {17927C87-38FB-4532-B9C5-AB707347E6E5}
 		{6F09E174-87C3-4BB0-AB60-10F60ABA9ACE} = {17927C87-38FB-4532-B9C5-AB707347E6E5}
+		{C2984A71-6A93-43CE-8928-93B954508958} = {9BA1A8DF-D3C8-4968-888F-4F9C615E919D}
+		{D30C1941-462A-409A-9186-553812A20E76} = {C2984A71-6A93-43CE-8928-93B954508958}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {D441C23A-08CF-4BD4-A16B-2C301ADA37F6}

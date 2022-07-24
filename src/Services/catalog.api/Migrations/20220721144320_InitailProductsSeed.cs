@@ -2,7 +2,7 @@
 
 namespace catalog.api.Migrations
 {
-    public partial class ProductSeed : Migration
+    public partial class InitailProductsSeed : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

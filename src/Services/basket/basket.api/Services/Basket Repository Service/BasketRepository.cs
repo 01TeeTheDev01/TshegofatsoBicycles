@@ -23,14 +23,14 @@
 
         public async Task<Basket> GetBasket(string id)
         {
-            var basket = await basketDbContext.Basket.FirstOrDefaultAsync(basket => basket.BasketId == Guid.Parse(id));
+            var basket = await basketDbContext.Baskets.FirstOrDefaultAsync(basket => basket.BasketId == Guid.Parse(id));
 
             return basket;
         }
 
         public async Task<IEnumerable<Basket>> GetBaskets()
         {
-            var baskets = await basketDbContext.Basket.ToListAsync();
+            var baskets = await basketDbContext.Baskets.ToListAsync();
 
             return baskets;
         }

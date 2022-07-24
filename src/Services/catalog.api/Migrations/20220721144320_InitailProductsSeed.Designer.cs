@@ -9,8 +9,8 @@ using catalog.api.Services.CatalogDbContext;
 namespace catalog.api.Migrations
 {
     [DbContext(typeof(CatalogDbContext))]
-    [Migration("20220721125121_ProductSeed")]
-    partial class ProductSeed
+    [Migration("20220721144320_InitailProductsSeed")]
+    partial class InitailProductsSeed
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
